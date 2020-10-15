@@ -1,0 +1,91 @@
+﻿@model MyFirstWebSite.Data.HangHoa
+
+@{
+    ViewData["Title"] = "Tao moi Hang Hoa";
+}
+
+<h1>Create</h1>
+
+<h4>HangHoa</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TenHangHoa" class="control-label"></label>
+                <input asp-for="TenHangHoa" class="form-control" />
+                <span asp-validation-for="TenHangHoa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgaySx" class="control-label"></label>
+                <input asp-for="NgaySx" type="datetime" class="form-control" />
+                <span asp-validation-for="NgaySx" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hinh" class="control-label"></label>
+                <input asp-for="Hinh" type="file" class="form-control" />
+                <span asp-validation-for="Hinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonGia" class="control-label"></label>
+                <input asp-for="DonGia" class="form-control" />
+                <span asp-validation-for="DonGia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GiaBan" class="control-label"></label>
+                <input asp-for="GiaBan" class="form-control" />
+                <span asp-validation-for="GiaBan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mota" class="control-label"></label>
+                <input asp-for="Mota" class="form-control" />
+                <span asp-validation-for="Mota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChiTiet" class="control-label"></label>
+                <input asp-for="ChiTiet" class="form-control" />
+                <span asp-validation-for="ChiTiet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GiamGia" class="control-label"></label>
+                <input asp-for="GiamGia" class="form-control" />
+                <span asp-validation-for="GiamGia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiemReview" class="control-label"></label>
+                <input asp-for="DiemReview" class="form-control" />
+                <span asp-validation-for="DiemReview" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaLoai" class="control-label"></label>
+                @await Html.PartialAsync("_LoaiDropDown", ViewBag.DanhSachLoai as MyFirstWebSite.View_Models.LoaiDropDownVM)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link href="~/lib/summernote/summernote.css" rel="stylesheet" />
+    <script src="~/lib/summernote/summernote.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#ChiTiet").summernote({
+            placeholder: 'Nhap chi tiet hang hoa',
+            tabsize: 4,
+            height: 150
+        });
+    });
+
+</script>
+
+}
